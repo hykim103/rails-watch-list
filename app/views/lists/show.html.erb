@@ -1,3 +1,7 @@
 <h1><%= @list.name %></h1>
-<%= link_to "add movie", new_list_bookmark_path %>
-<%# <%= render "lists/movie" %> %>
+<%= simple_form_for [@list, Bookmark.new] do |f| %>
+  <%= f.association :movie, input_html: {data: {controller: "tom_select"}} %>
+  <%= f.input :comment %>
+  <%= f.submit "add movie" %>
+<% end %>
+<%= render "lists/movie" %>

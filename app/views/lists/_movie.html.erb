@@ -1,6 +1,8 @@
-<% @list.movies each do |movie| %>
-  <%= movie.poster_url %>
-  <%= movie.title %>
-  <%= movie.rating %>
-  <%= movie.overview %>
+<% @list.movies.each do |movie| %>
+  <img src="<%= movie.poster_url %>" alt="<%= movie.title %> poster">
+  <p><%= movie.title %></p>
+  <p><%= movie.rating %></p>
+  <p><%= movie.overview %></p>
+  <p><%= movie.bookmarks.first.comment %></p>
+  <p><%= link_to "delete", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
 <% end %>
