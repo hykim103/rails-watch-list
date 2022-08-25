@@ -4,5 +4,5 @@
   <p><%= movie.rating %></p>
   <p><%= movie.overview %></p>
   <p><%= movie.bookmarks.first.comment %></p>
-  <p><%= link_to "delete", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
+  <p><%= link_to "delete", bookmark_path(movie.bookmarks.first), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}%></p>
 <% end %>
