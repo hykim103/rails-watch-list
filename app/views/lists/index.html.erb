@@ -1,6 +1,11 @@
-<h1>Lists#index</h1>
-<%= link_to "add list", new_list_path %>
-<% @lists.each do |list| %>
-  <p><%= link_to list.name, list_path(list) %></p>
-  <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>
+<div class="container">
+  <% @lists.each do |list| %>
+    <div class="card-category d-flex justify-content-center align-items-center"
+      style="height: 210px; width: 280px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 210, crop: :fill %>')">
+      <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: 'nav-icond' do %>
+          <i class="fa-solid fa-xmark"></i>
+        <% end %>
+      <%= link_to list.name, list_path(list) %>
+    </div>
+  <% end %>
+</div>

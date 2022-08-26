@@ -1,7 +1,11 @@
 <%= link_to "back", root_path %>
-<h1><%= @list.name %></h1>
+<div class="list d-flex justify-content-center align-items-center"
+  style="height: 300px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @list.photo.key, height: 300, crop: :fill %>')">
+  <h1><%= @list.name %></h1>
+</div>
+
 <%= simple_form_for [@list, Bookmark.new] do |f| %>
-  <%= f.association :movie, input_html: {data: {controller: "tom_select", tom_select_options_value: {tags: true}}} %>
+  <%= f.association :movie %>
   <%= f.input :comment %>
   <%= f.submit "add movie" %>
 <% end %>
