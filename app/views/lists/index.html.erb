@@ -2,4 +2,5 @@
 <%= link_to "add list", new_list_path %>
 <% @lists.each do |list| %>
   <p><%= link_to list.name, list_path(list) %></p>
+  <%= cl_image_tag list.photo.key, height: 300, width: 400, crop: :fill %>
 <% end %>
